@@ -1,0 +1,9 @@
+version: "2"
+services:
+   nginx:
+     image: shuosc/nginx:latest
+     ports:
+       - "8090:80"
+     volumes:
+       - /home/zhonger/ftp/:/var/www/data
+     restart: always

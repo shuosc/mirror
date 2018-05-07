@@ -1,0 +1,11 @@
+version: "2"
+services:
+   rsync:
+     image: shuosc/rsync:latest
+     ports:
+       - "873:873"
+     volumes:
+       - /home/zhonger/ftp:/var/www/data
+       - ./logs:/var/log/rsync
+     restart: always
+     privileged: true

@@ -1,0 +1,15 @@
+server {
+    listen 80;
+	server_name _;
+    root /var/www/html;
+	index index.html;
+    autoindex on;
+    autoindex_exact_size off;
+    autoindex_localtime on;
+
+    location / {
+		include /var/www/html/fancyindex/fancyindex.conf;
+        disable_symlinks off;
+    }
+
+}

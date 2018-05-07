@@ -1,0 +1,12 @@
+version: "2"
+services:
+   awstats:
+     image: shuosc/awstats:latest
+     volumes:
+       - ./data:/opt/awstats/
+       - ./data/data:/var/lib/awstats
+       - /var/log/nginx:/var/log/nginx
+     environment:
+       - TIME=45m
+       - DOMAIN=mirrors.shu.edu.cn
+     restart: always

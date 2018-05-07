@@ -1,0 +1,11 @@
+version: "2"
+services:
+   vsftpd:
+     image: shuosc/vsftpd:latest
+     ports:
+       - "21:21"
+       - "5010-5020:5010-5020"
+     volumes:
+       - /home/zhonger/ftp/:/var/www/ftpbase
+     restart: always
+     privileged: true
