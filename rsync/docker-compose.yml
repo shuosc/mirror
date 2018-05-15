@@ -7,5 +7,6 @@ services:
      volumes:
        - /home/zhonger/ftp:/var/www/data
        - ./logs:/var/log/rsync
+       - ./:/opt/rsync
      restart: always
      privileged: true

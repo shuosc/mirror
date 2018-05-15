@@ -6,6 +6,7 @@ services:
        - "21:21"
        - "5010-5020:5010-5020"
      volumes:
+       - ./:/opt/vsftpd
        - /home/zhonger/ftp/:/var/www/ftpbase
      restart: always
      privileged: true
