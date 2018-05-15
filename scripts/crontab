@@ -1,0 +1,109 @@
+# 官方源 A级保障 （每日维护，冗余备份）
+
+## 操作系统类
+42 */6 * * * rsync -avz --delete --safe-links archive.ubuntu.com::ubuntu /home/data/rsync/ubuntu
+3 2 * * * rsync -avz --delete --safe-links rsync.releases.ubuntu.com::releases /home/data/rsync/ubuntu-releases
+2 */6 * * * rsync -aqzH --delete msync.centos.org::CentOS /home/data/rsync/centos/
+32 */4 * * * rsync -avz --delete --safe-links mirrors.rit.edu::archlinux /home/data/rsync/archlinux
+52 */4 * * * rsync -avz --delete --safe-links rsync.apache.org::apache-dist /home/data/rsync/apache
+23 */6 * * * rsync -avz --delete --safe-links mirror.anthonos.org::anthon /home/data/rsync/anthon
+23 */6 * * * rsync -rtlivH --delete-after --delay-updates --safe-links --password-file=/home/mirror/archlinuxcn.secret --max-delete=1000 --contimeout=60 shu@sync.repo.archlinuxcn.org::repo /home/data/rsync/archlinuxcn/
+27 */6 * * * rsync -avz --delete --safe-links repo.manjaro.org::repos /home/data/rsync/manjaro
+12 */8 * * * rsync -avz --delete --safe-links archive.parrotsec.org::parrot /home/data/rsync/parrot
+48 */8 * * * rsync -avz --delete --safe-links archive.raspbian.org::archive /home/data/rsync/raspbian
+37 */8 * * * rsync -avz --delete --safe-links rsync-packages.linuxmint.com::packages /home/data/rsync/linuxmint
+40 2 * * * rsync -avz --delete --safe-links pub.linuxmint.com::pub /home/data/rsync/linuxmint-cd
+27 */8 * * * rsync -avz --delete --safe-links rsync.deepin.com::deepin /home/data/rsync/deepin
+32 3 * * * rsync -avz --delete --safe-links rsync.deepin.com::releases /home/data/rsync/deepin-cd
+54 */6 * * * rsync -avz --delete --safe-links mirrors.kernel.org::opensuse /home/data/rsync/opensuse
+
+
+## 工具类
+49 */12 * * * rsync -avz --delete --safe-links cpan-rsync.perl.org::CPAN /home/data/rsync/CPAN
+16 */12 * * * rsync -e "ssh -i /home/mirror/cran/id_rsa" -rtlzv --delete cran-rsync@cran.r-project.org: /home/data/rsync/CRAN
+34 */12 * * * rsync -avz --delete --safe-links rsync.dante.ctan.org::CTAN /home/data/rsync/CTAN
+36 */8 * * * rsync -avz --delete --safe-links rsync.osuosl.org::jenkins /home/data/rsync/jenkins
+44 */10 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/eclipse /home/data/rsync
+19 */4 * * * /usr/local/bin/bandersnatch mirror
+32 */12 * * * rsync -avz --delete --safe-links rsync.videolan.org::videolan-ftp /home/data/rsync/videolan-ftp
+14 */8 * * * rsync -avz --delete --safe-links rsync.osuosl.org::mariadb /home/data/rsync/mariadb
+26 */12 * * * rsync -avz --delete --safe-links rsync.kde.org::alldata /home/data/nfs/rsync/kde
+50 */8 * * * rsync -avz --delete --safe-links rsync://ftp.lyx.org/ftp/pub/lyx /home/data/rsync/
+18 */8 * * * rsync -avz --delete --safe-links rsync-origin.macports.org::macports/ /home/data/rsync/macports
+ 
+
+# 非官方源 B级保障 （每日维护）
+
+## 操作系统类
+
+23 1 * * * rsync -avz --delete --safe-links cdimage.ubuntu.com::cdimage /home/data/rsync/ubuntu-cdimage
+43 1 * * * rsync -avz --delete --safe-links cloud-images.ubuntu.com::cloud-images /home/data/rsync/ubuntu-cloud-images
+31 */8 * * * rsync -avz --delete --safe-links us-msync.centos.org::altarch /home/data/rsync/centos-altarch
+56 */6 * * * rsync -avz --delete --safe-links ftp.nluug.nl::repoforge /home/data/rsync/repoforge
+12 */6 * * * rsync -avz --delete --safe-links ftp.us.debian.org::debian /home/data/rsync/debian
+46 4 * * * rsync -avz --delete --safe-links mirrors.kernel.org::debian-cd /home/data/rsync/debian-cd
+22 */6 * * * rsync -avz --delete --safe-links www.deb-multimedia.org::deb /home/data/rsync/deb-multimedia
+44 */6 * * * rsync -avz --delete --safe-links mirrors.rit.edu::gentoo /home/data/rsync/gentoo
+38 */6 * * * rsync -avz --delete --safe-links rsync.alpinelinux.org::alpine /home/data/rsync/alpine
+45 */8 * * * rsync -avz --delete --safe-links ftp.halifax.rwth-aachen.de::archlinux-arm /home/data/rsync/archlinuxarm
+22 1 * * *rsync -avz --delete --safe-links rsync.opnsense.org::opnsense /home/data/rsync/opnsense
+
+## 工具类
+
+6 */10 * * * rsync -avz --delete --safe-links repo.zabbix.com::mirror /home/data/rsync/zabbix && chmod -R 755 /home/data/rsync/zabbix
+24 */8 * * * rsync -avz --delete --safe-links rsync.postgresql.org::pgsql-ftp /home/data/rsync/postgresql
+23 */4 * * * docker restart homebrew-bottles && docker restart homebrew-bottles-emacs
+34 */4 * * * cd /home/mirror/ && /home/mirror/bin/git-mirror Homebrew/brew  >> /home/mirror/log/brew.log 2>&1
+44 */4 * * * cd /home/mirror/ && /home/mirror/bin/git-mirror Homebrew/homebrew-core  >> /home/mirror/log/homebrew-core.log 2>&1
+54 */4 * * * cd /home/mirror/ && /home/mirror/bin/git-mirror caskroom/homebrew-cask  >> /home/mirror/log/homebrew-cask.log 2>&1
+20 */4 * * * cd /home/mirror/ && /home/mirror/bin/git-mirror CocoaPods/Specs >> /home/mirror/log/specs.log 2>&1
+8 */12 * * * rsync -avz --delete --safe-links  fedorapeople.org::groups/virt /home/data/rsync/
+35 */4 * * * /home/mirror/bin/rubygems.sh
+35 3 */7 * * /home/mirror/bin/ruby.sh
+centos-cloud
+docker-ce
+manjaro-cd
+mongodb
+mysql
+node
+pritunl
+zerotier
+virtualbox
+vscode
+
+# 非官方源 C级保障 （定期维护）
+
+## 操作系统类
+
+
+4 */8 * * * rsync -avz --delete --safe-links mirrors.ustc.edu.cn::kali /home/data/rsync/kali
+54 3 * * * rsync -avz --delete --safe-links ftp.nluug.nl::kali-images /home/data/rsync/kali-images
+28 */6 * * * rsync -avz --delete --safe-links mirrors.tuna.tsinghua.edu.cn::fedora /home/data/rsync/fedora
+38 */6 * * * rsync -avz --delete --safe-links mirror.de.leaseweb.net::epel /home/data/rsync/epel
+
+## 工具类
+
+26 */12 * * * rsync -avz --delete --safe-links ftp.vim.org::Vim /home/data/rsync/vim
+15 */12 * * * rsync -avz --delete --safe-links rsync.elvish.io::elvish /home/data/rsync/elvish
+19 */12 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/ceph /home/data/rsync
+15 */8 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/cygwin /home/data/rsync
+38 */12 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/gimp /home/data/rsync
+6 */12 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/gnome /home/data/rsync
+16 */12 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/gnu /home/data/rsync
+46 */12 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/kernel /home/data/rsync/
+56 */12 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/libreoffice /home/data/rsync
+34 */8 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/openwrt /home/data/rsync
+45 */12 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/RFCs /home/data/rsync
+39 */8 * * * rsync -avz --delete --safe-links mirrors.tuna.tsinghua.edu.cn::msys2 /home/data/rsync/msys2
+39 */8 * * * rsync -avz --delete --safe-links downloads.lede-project.org::downloads /home/data/rsync/lede
+22 */12 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/putty /home/data/rsync
+53 3 * * * rsync -avz --delete --safe-links link-start.iina.io::iina /home/data/rsync/iina
+39 */8 * * * rsync -avz --delete --safe-links rsync://repo.saltstack.com/saltstack_pkgrepo_full /home/data/rsync/saltstack
+22 1 * * 6,7 /home/mirror/bin/anaconda.sh  >> /home/mirror/log/ananconda.log 2>&1
+
+
+
+
+# 其他信息
+docker run -itd --name=homebrew-bottles -v /home/data/nfs/rsync/homebrew-bottles/bottles:/srv/data gaoyifan/homebrew-bottle-mirror
+docker run -itd --name=homebrew-bottles-emacs -e HOMEBREW_TAP=emacs -v /home/data/nfs/rsync/homebrew-bottles/bottles-emacs:/srv/data gaoyifan/homebrew-bottle-mirror
