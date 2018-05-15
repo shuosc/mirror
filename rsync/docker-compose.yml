@@ -5,8 +5,8 @@ services:
      ports:
        - "873:873"
      volumes:
-       - /home/zhonger/ftp:/var/www/data
        - ./logs:/var/log/rsync
        - ./:/opt/rsync
+       - /home/zhonger/ftp:/var/www/data
      restart: always
      privileged: true

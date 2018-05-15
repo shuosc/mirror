@@ -5,6 +5,6 @@ services:
      ports:
        - "8090:80"
      volumes:
-       - /home/zhonger/ftp/:/var/www/data
        - ./:/opt/nginx
+       - /home/zhonger/ftp/:/var/www/data
      restart: always
