@@ -9,7 +9,8 @@ while(( "$i" <= "$lens" ))
 do
     odir=$(awk 'NR=='$i' {print $1}' coapache.ini)
     ndir=$(awk 'NR=='$i' {print $2}' coapache.ini)
-    ln -s "/var/www/data/"$odir "/var/www/html/"$ndir
+    mkdir -p "/var/www/html/"$ndir
+    mount --bind "/var/www/data/"$odir "/var/www/html/"$ndir
     ((i++))
 done
 

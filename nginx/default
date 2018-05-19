@@ -10,6 +10,7 @@ server {
     location / {
 		include /var/www/html/fancyindex/fancyindex.conf;
         disable_symlinks off;
+        add_header Access-Control-Allow-Origin *;
     }
 
 }

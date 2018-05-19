@@ -20,7 +20,7 @@
 
 ## 工具类
 49 */12 * * * rsync -avz --delete --safe-links cpan-rsync.perl.org::CPAN /home/data/rsync/CPAN
-16 */12 * * * rsync -e "ssh -i /home/mirror/cran/id_rsa" -rtlzv --delete cran-rsync@cran.r-project.org: /home/data/rsync/CRAN
+16 */12 * * * rsync -e "ssh -i /home/mirror/.ssh/id_rsa" -rtlzv --delete cran-rsync@cran.r-project.org: /home/data/rsync/CRAN
 34 */12 * * * rsync -avz --delete --safe-links rsync.dante.ctan.org::CTAN /home/data/rsync/CTAN
 36 */8 * * * rsync -avz --delete --safe-links rsync.osuosl.org::jenkins /home/data/rsync/jenkins
 44 */10 * * * rsync -avz --delete --safe-links mirror.math.princeton.edu::pub/eclipse /home/data/rsync
@@ -47,6 +47,7 @@
 38 */6 * * * rsync -avz --delete --safe-links rsync.alpinelinux.org::alpine /home/data/rsync/alpine
 45 */8 * * * rsync -avz --delete --safe-links ftp.halifax.rwth-aachen.de::archlinux-arm /home/data/rsync/archlinuxarm
 22 1 * * *rsync -avz --delete --safe-links rsync.opnsense.org::opnsense /home/data/rsync/opnsense
+33 2 * * * rsync -avz --delete --safe-links mirrors.tuna.tsinghua.edu.cn::manjaro-cd /home/data/rsync/manjaro-cd
 
 ## 工具类
 
@@ -60,16 +61,16 @@
 8 */12 * * * rsync -avz --delete --safe-links  fedorapeople.org::groups/virt /home/data/rsync/
 35 */4 * * * /home/mirror/bin/rubygems.sh
 35 3 */7 * * /home/mirror/bin/ruby.sh
-centos-cloud
-docker-ce
-manjaro-cd
-mongodb
-mysql
-node
-pritunl
-zerotier
-virtualbox
-vscode
+
+/home/mirror/bin/centos-cloud.sh
+/home/mirror/bin/docker-ce.sh
+/home/mirror/bin/mongodb.sh
+/home/mirror/bin/mysql.sh
+/home/mirror/bin/node.sh
+/home/mirror/bin/pritunl.sh
+/home/mirror/bin/zerotier.sh
+/home/mirror/bin/virtualboxsh
+/home/mirror/bin/vscode.sh
 
 # 非官方源 C级保障 （定期维护）
 
