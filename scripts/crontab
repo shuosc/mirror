@@ -46,7 +46,7 @@
 44 */6 * * * rsync -avz --delete --safe-links mirrors.rit.edu::gentoo /home/data/rsync/gentoo
 38 */6 * * * rsync -avz --delete --safe-links rsync.alpinelinux.org::alpine /home/data/rsync/alpine
 45 */8 * * * rsync -avz --delete --safe-links ftp.halifax.rwth-aachen.de::archlinux-arm /home/data/rsync/archlinuxarm
-22 1 * * *rsync -avz --delete --safe-links rsync.opnsense.org::opnsense /home/data/rsync/opnsense
+22 1 * * * rsync -avz --delete --safe-links rsync.opnsense.org::opnsense /home/data/rsync/opnsense
 33 2 * * * rsync -avz --delete --safe-links mirrors.tuna.tsinghua.edu.cn::manjaro-cd /home/data/rsync/manjaro-cd
 
 ## 工具类
@@ -81,6 +81,7 @@
 54 3 * * * rsync -avz --delete --safe-links ftp.nluug.nl::kali-images /home/data/rsync/kali-images
 28 */6 * * * rsync -avz --delete --safe-links mirrors.tuna.tsinghua.edu.cn::fedora /home/data/rsync/fedora
 38 */6 * * * rsync -avz --delete --safe-links mirror.de.leaseweb.net::epel /home/data/rsync/epel
+35 */8 * * * rsync -avz --delete --safe-links kaosx.tk::kaos /home/data/rsync/kaos
 
 ## 工具类
 
